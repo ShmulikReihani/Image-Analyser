@@ -63,18 +63,18 @@ class ImageAnalyser {
         for($i=0; $i<$x; $i++){
             $xArrayPopular[$i] = $key[$i];
         }
-        $this->mostPopularArray = $xArrayPopular;
+        return $xArrayPopular;
     }
 
-    //return the x's popular RGB and how much present of the image they cover
-    function popularRGBCoverImage(){
+    //get a array and return the x's popular RGB and how much present of the image they cover
+    function popularRGBCoverImage($mostPopular){
         $sum = 0;
         $RGBArrayCoverImage = array();
         foreach ($this->arrayOfRGB as $subject => $marks){  
             $sum = $sum + $marks;  
         } 
-        for($i=0; $i<count($this->mostPopularArray); $i++){
-            $RGBArrayCoverImage[$this->mostPopularArray[$i]] = ($this->arrayOfRGB[$this->mostPopularArray[$i]]/ $sum) * 100;
+        for($i=0; $i<count($mostPopular); $i++){
+            $RGBArrayCoverImage[$mostPopular[$i]] = ($this->arrayOfRGB[$mostPopular[$i]]/ $sum) * 100;
         }
         return $RGBArrayCoverImage;
     }
